@@ -23,27 +23,35 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG,"onCreate")
-        setContentView(R.layout.activity_main)
-        viewModel.randomFill()
+        Log.d(TAG,"onCreateActivity")
+        setContentView(R.layout.activity_main2)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
-
-        viewModel.dataList.observe(this, androidx.lifecycle.Observer {
-            Log.d(TAG,"viewModel.dataList.observe")
-            sectionsPagerAdapter.refreshItems(it)
-        })
-
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-         //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
-            Log.d(TAG,"FAB pressed")
-            viewModel.randomFill()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.mainFragment, MainFragment(), "MainFragment")
+                .commit()
         }
+
+//        viewModel.randomFill()
+//
+//        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+//
+//        viewModel.dataList.observe(this, androidx.lifecycle.Observer {
+//            Log.d(TAG,"viewModel.dataList.observe")
+//            sectionsPagerAdapter.refreshItems(it)
+//        })
+//
+//        val viewPager: ViewPager = findViewById(R.id.view_pager)
+//        viewPager.adapter = sectionsPagerAdapter
+//        val tabs: TabLayout = findViewById(R.id.tabs)
+//        tabs.setupWithViewPager(viewPager)
+//
+//        val fab: FloatingActionButton = findViewById(R.id.fab)
+//        fab.setOnClickListener { view ->
+//         //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+//            Log.d(TAG,"FAB pressed")
+//            viewModel.randomFill()
+//        }
     }
 }
