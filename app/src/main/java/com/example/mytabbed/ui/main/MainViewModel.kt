@@ -21,7 +21,7 @@ class MainViewModel: ViewModel() {
 
 
     companion object {
-        class MainViewModelFactory () : ViewModelProvider.NewInstanceFactory() {
+        class MainViewModelFactory : ViewModelProvider.NewInstanceFactory() {
 
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
