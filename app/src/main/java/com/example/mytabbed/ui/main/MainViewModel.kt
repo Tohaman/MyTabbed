@@ -16,6 +16,7 @@ class MainViewModel: ViewModel() {
         for (i in 0..(3..7).random()) {
             list.add((10..20).random())
         }
+        _dataList.postValue(list)
     }
 
 
